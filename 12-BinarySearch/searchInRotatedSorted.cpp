@@ -67,4 +67,4 @@ int main()
     int key = 11;
     int postion = findPostion(arr, size, key);
     cout << "postion : " << postion;
-}
+}   
