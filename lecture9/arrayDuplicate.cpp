@@ -20,6 +20,6 @@ int solution(vector<int> &arr) //// & is used to change in both main and solutio
 
 int main()
 {
-    vector<int> arr = {5, 1, 5, 3, 4};
+    vector<int> arr = {5, 1, 5, 3, 3, 4};
     cout << "Duplicate elemtnts" << solution(arr);
 }
