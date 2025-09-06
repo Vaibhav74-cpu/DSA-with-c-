@@ -2,6 +2,33 @@
 #include <vector>
 using namespace std;
 
+bool searchInMatrix(vector<vector<int>>& arr, int target){
+    int row=arr.size();
+    int col=arr[0].size();
+    
+    int rowIndex=0;
+    int colIndex=col-1;
+
+    while (rowIndex<row && colIndex>=0)
+    {
+        int element = arr[rowIndex][colIndex];
+
+        if (element == target)
+        {
+            return 1;
+        }
+        if (element < target)
+        {
+            rowIndex++;
+        }
+        else{
+            colIndex--;
+        }
+    }
+    return 0;
+    
+}
+
 vector<int> spiral(vector<vector<int>> &arr)
 {
     vector<int> ans;
@@ -160,6 +187,8 @@ int main()
     int target;
     cin >> target;
     bool binarySearch = searchMatrix(arr, target);
+    bool SearchIn2dMatrix = searchInMatrix(arr, target);
     cout << "The target value present in 2d matrix or not" << binarySearch << endl;
+    cout<< "the target element that are sorted as row and col wise is present or not : "<<SearchIn2dMatrix<<endl; 
     return 0;
 }
