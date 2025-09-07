@@ -17,11 +17,11 @@ bool searchInMatrix(vector<vector<int>>& arr, int target){
         {
             return 1;
         }
-        if (element < target)
+        if (element < target) ///move down
         {
             rowIndex++;
         }
-        else{
+        else{  // move left
             colIndex--;
         }
     }
