@@ -3,7 +3,8 @@ using namespace std;
 int main()
 {
     int arr[10] = {22, 122, 41, 67};
-    cout << "Address of first block in  array is " << arr << endl;
+    
+    cout << "Address of first memory block in  array is " << arr << endl;
     cout << "Address of first block in  array is " << arr[0] << endl;
     // cout << "Address of first block in  array is " << arr[0] << endl;   //garbage value
     cout << "Address of first block in  array is " << &arr[0] << endl;

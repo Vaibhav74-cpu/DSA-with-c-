@@ -17,10 +17,12 @@ void update(int *p)
 
 int getSum(int *arr, int n)
 {
+    cout << "size of array is: " << sizeof(arr) << endl;// size is 4 because its pointer
     int sum = 0;
     for (int i = 0; i < n; i++)
     {
         sum += arr[i];
+        // sum = sum + i[arr];
     }
     return sum;
 }
