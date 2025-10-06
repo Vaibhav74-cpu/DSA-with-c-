@@ -73,11 +73,19 @@ int main()
 
     hero1.print();
 
-    // Hero hero2 = hero1;
+    // Hero hero2 = hero1;  //or
     Hero hero2(hero1);
     hero2.print();
 
     hero1.name[0] = 'G'; // change name of hero1 -> babbar to gabbar
+
+    hero1.print();
+
+    hero2.print();
+
+    // copy assignment operator
+    cout << "copy assignement operator" << endl;
+    hero1 = hero2;
     hero1.print();
 
     hero2.print();
