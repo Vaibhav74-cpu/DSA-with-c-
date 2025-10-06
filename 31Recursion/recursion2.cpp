@@ -26,8 +26,11 @@ int fibonacci(int n)
     if (n == 1)
         return 1;
 
+    // int ans = fibonacci(n - 1) + fib(n - 2);
+
     // recursion ralation
     return (n - 1) + (n - 2);
+    // return ans;
 }
 
 int climbStairs(long long nStairs)
@@ -56,7 +59,7 @@ void sayDigit(int n, string arr[])
     // recursive call
     sayDigit(n, arr);
 
-    cout << arr[digit]<<" ";
+    cout << arr[digit] << " ";
 }
 
 int main()
