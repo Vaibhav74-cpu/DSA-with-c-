@@ -22,14 +22,6 @@ public:
         this->health = health;
     }
 
-    // your own copy constructor
-    Hero(Hero &sharukh)
-    {
-        cout << "your own copy constructor called" << endl;
-        this->health = sharukh.health;
-        this->level = sharukh.level;
-    }
-
     int getHealth()
     {
         return health;
@@ -48,12 +40,6 @@ public:
         level = lvl;
     }
 
-    // destructor
-    ~Hero()
-    {
-        cout << "destructor called" << endl;
-    }
-
     // static function
     static int staticFuction()
     {
@@ -62,14 +48,11 @@ public:
 };
 
 int Hero ::timeToComplete = 5;
+
 int main()
 {
     // static
     Hero akshay; // destructor called automatically for static allocation
-
-    // Dynamic
-    Hero *govinda = new Hero();
-    delete govinda; // destuctor called maually for dynamic allocation
 
     // static keyword
     cout << "static keyword : " << Hero::timeToComplete << endl;
@@ -77,7 +60,3 @@ int main()
 
     cout << "static function : " << Hero::staticFuction() << endl;
 }
-
-/*
-static keyword is belongs to the class
-*/
