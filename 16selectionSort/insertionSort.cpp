@@ -12,7 +12,7 @@ void insertionSort(vector<int> &arr, int n)
             if (arr[j] > sortedValue)
             {
                 // shift
-                arr[j + 1] = arr[j];
+                arr[j + 1] = arr[j];   
             }
             else
             {
