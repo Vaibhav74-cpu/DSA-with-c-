@@ -12,6 +12,20 @@ public:
         this->data = data;
         this->next = NULL;
     }
+
+    // destructor for deleting nodes from heap
+    
+    ~Node()
+    {
+        int value = this->data;
+        // free the memory
+        if (this->next = NULL)
+        {
+            delete next;
+            this->next = NULL;
+        }
+        cout << "memory is free with value : " << value << endl;
+    }
 };
 
 void insertAtHead(Node *&head, int data)
@@ -30,7 +44,7 @@ void insertAtTail(Node *&tail, int data)
 
 void insertAtPosition(Node *&head, Node *&tail, int position, int data)
 {
-    // insert at start 
+    // insert at start
     if (position == 1)
     {
         insertAtHead(head, data);
@@ -69,6 +83,40 @@ void printNode(Node *&head_tail)
     }
     cout << endl;
 }
+
+void deleteNode(int position, Node *&head)
+{
+    // initial/first/start node deleting
+    if (position == 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        // free the memory
+        temp->next = NULL;
+        delete temp;
+    }
+    else
+    {
+        // middle and last node deleting
+        Node *curr = head;
+        Node *prev = NULL;
+
+        int cnt = 1;
+        while (cnt < position)
+        {
+            prev = curr;
+            curr = curr->next;
+            cnt++;
+        }
+
+        // conditions for delelting middle and last node
+        prev->next = curr->next;
+        curr->next = NULL; // make sure that deleting node does not point to the other node. so before deleting, assign it with null value.
+        // in this case we deleting curr node so make sure that curr->next=null
+        delete curr;
+    }
+}
+
 int main()
 {
     // create initial node.
@@ -97,6 +145,12 @@ int main()
 
     insertAtPosition(head, tail, 5, 11);
     printNode(head);
+
+    deleteNode(3, head);
+    printNode(head);
+
+    // deleteNode(6, head);
+    // printNode(head);
 
     // insertAtTail(tail, 5);
     // printNode(tail);
