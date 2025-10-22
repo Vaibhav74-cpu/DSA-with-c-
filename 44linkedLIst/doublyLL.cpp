@@ -17,7 +17,17 @@ public:
     }
 
     // destructor
-    //  ~Node(){}
+    ~Node()
+    {
+        int value = this->data;
+        if (next != NULL) // if next is not null then delete that element
+        {
+            delete next;
+            next = NULL;
+        }
+
+        cout << "your memory block is now free for the data : " << value << endl;
+    }
 };
 
 void insertAtHead(Node *&head, Node *&tail, int data)
@@ -112,9 +122,38 @@ int nodeLength(Node *&head)
     return len;
 }
 
-// void deleteNode(int position, Node *&head)
-// {
-// }
+void deleteNode(int position, Node *&head)
+{
+    // deletin start or first node
+    if (position == 1)
+    {
+        Node *temp = head;
+        temp->next->prev = NULL;
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;
+    }
+    else
+    {
+        // delting node if they in the last and middle  postion
+        Node *curr = head;
+        Node *prev = NULL;
+
+        int cnt = 1;
+        while (cnt < position)
+        {
+            prev = curr;
+            curr = curr->next;
+            cnt++;
+        }
+        // now node is reached for deleting position
+
+        curr->prev = NULL;
+        prev->next = curr->next;
+        curr->next = NULL;
+        delete curr;
+    }
+}
 
 int main()
 {
@@ -124,20 +163,50 @@ int main()
     Node *tail = NULL;
 
     printNode(head);
-    cout << "\nlenth of list is : " << nodeLength(head) << endl;
+    // cout << "\nlenth of list is : " << nodeLength(head) << endl;
 
     insertAtHead(head, tail, 12);
     insertAtHead(head, tail, 15);
-    // printNode(head);
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
 
     insertAtTail(head, tail, 13);
     insertAtTail(head, tail, 15);
-    // printNode(head);
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
 
     insertAtPosition(head, tail, 4, 7);
     insertAtPosition(head, tail, 6, 9);
-    // printNode(head);
-
-    insertAtPosition(head, tail, 8, 17);
     printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
+
+    insertAtPosition(head, tail, 5, 17);
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
+
+    deleteNode(1, head); // delete for starting position
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
+
+    deleteNode(6, head); // delete for last position
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
+
+    deleteNode(3, head); // delete memory for middle node
+    printNode(head);
+    cout << endl;
+    cout << "head : " << head->data << " , ";
+    cout << "tail : " << tail->data << endl;
 }
